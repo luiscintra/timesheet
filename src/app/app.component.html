@@ -1,3 +1,26 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-left">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/main">My Timesheet</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active"><a routerLink="/main">Today</a></li>
+                <li routerLinkActive="active"><a routerLink="/week">Week</a></li>
+                <li routerLinkActive="active"><a routerLink="/month">Month</a></li>
+                <li routerLinkActive="active"><a routerLink="/year">Year</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="main-app-div" style="text-align:center">
   <h1>
@@ -5,101 +28,8 @@
   </h1>
 </div>
 
-<div class="container">
-    
-            <!-- PANEL SUMMARY -->
-            <div class="row panelrow">
-                <div class="col-sm-4">
-                </div>
-    
-                <div class="col-sm-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Today's Summary</h3>
-                        </div>
-                        <div class="panel-body">
-    
-                            <ul class="list-group">
-                                <li class="list-group-item"><strong>Started:</strong> <span>{{startTime}}</span> </li>
-                                <li class="list-group-item"><strong>Finished:</strong> <span>{{finishTime}}</span></li>
-                                <li class="list-group-item"><strong>Total:</strong> <span>{{totalTime}}</span></li>
-                            </ul>
-    
-                        </div>
-                    </div>
-    
-                    <div class="text-center">
-                        <button type="button" class="btn btn-lg btn-primary">Start/Finish</button>
-                        <button type="button" class="btn btn-lg">Start/Finish at...</button>
-                    </div>
-    
-                </div>
-    
-                <div class="col-sm-4">
-                </div>
-            </div>
-    
-            <!-- PANEL TRACKED TIME -->
-            <div class="row panelrow">
-                <div class="col-sm-4">
-                </div>
-    
-                <div class="col-sm-4">
-    
-                    <div class="panel panel-default">
-                        <div class="panel-heading ">
-                            <span class="panel-title">Today's Tracked Periods (component)</span>
-                            <span class="pull-right"> <button type="button" class="btn btn-xs btn-success"> ADD </button></span>
-                        </div>
-    
-    
-                        <!--========================= MAKE THIS TABLE A COMPONENT: THIS SHOULD BE REUSED IN THE WEEK VIEW WHEN CLICK A DAY ============================= -->
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Started</th>
-                                    <th>Finished</th>
-                                    <th>Period</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let entry of todayEntries">
-                                    <!--IN ORDER TO COLLAPSE, use: class="collapse out/in"-->
-                                    <td>{{entry.startTime}}</td>
-                                    <td>{{entry.finishTime}}</td>
-                                    <td>{{entry.totalTime}}</td>
-                                </tr>
-                                <tr>
-                                    <!--form class="form-group"-->
-                                        <td class="tracked-periods-table-input-td"><input class="form-control" aria-label="Started Time" type="text" value="13:00"></td>
-                                        <td class="tracked-periods-table-input-td"><input class="form-control" aria-label="Finished Time" type="text" value="15:00"></td>
-                                        <td class="tracked-periods-table-input-td text-right vertical-middle"><button type="button" class="btn btn-xs btn-success"> SAVE </button></td>
-                                    <!-- </form> -->
-                                </tr>
-                                <tr>
-                                    <td class="text-right " colspan="3">
-                                        <button type="button" class="btn btn-xs btn-primary"> EDIT </button>
-                                        <button type="button" class="btn btn-xs btn-danger"> DELETE </button>
-    
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>17:00</td>
-                                    <td>(still counting)</td>
-                                    <td>02:38</td>
-                                </tr>
-                            </tbody>
-                        </table>
-    
-    
-                    </div>
-    
-                </div>
-    
-                <div class="col-sm-4">
-                </div>
-            </div>
-    
-        </div>
+
+
+<router-outlet></router-outlet>
 
 
