@@ -1,0 +1,21 @@
+.panelrow {
+    margin-top: 80px
+}
+
+.tracked-periods-table-input-td {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+.panel-heading {
+    padding-right: 8px
+}
+
+table > tbody > tr > td.vertical-middle {
+    vertical-align: middle !important
+}
+
+.panel-heading-vertical-align {
+    line-height: 100%
+}
+ 
