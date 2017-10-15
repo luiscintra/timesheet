@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { TimePeriod } from './time-period'
 
 @Component({
@@ -8,22 +9,13 @@ import { TimePeriod } from './time-period'
 })
 export class AppComponent {
   title = 'Timesheet';
-  
-  tm : TimePeriod = new TimePeriod('08:45', '11:45', '03:00', null);
-  
-  startTime : string = this.tm.startTime;
-  finishTime : string = this.tm.finishTime;
-  totalTime : string = this.tm.totalTime;
+  today: Date = new Date();
 
-  todayEntries : TimePeriod[] = [
-    new TimePeriod('08:45', '11:45', '03:00', null),
-    new TimePeriod('12:00', '13:00', '01:00', null),
-    new TimePeriod('13:30', '14:30', '01:00', null),
-    new TimePeriod('15:00', '17:00', '02:00', null),
-    new TimePeriod('20:00', '23:45', '03:45', null)
-  ];
+  addTime() : void {
 
+    this.today = new Date();
+    this.today.setMinutes( 10);
 
-
+  }
 
 }
