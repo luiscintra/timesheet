@@ -13,9 +13,9 @@
                             <div class="panel-body">
         
                                 <ul class="list-group">
-                                    <li class="list-group-item"><strong>Started:</strong> <span>{{startTime}}</span> </li>
-                                    <li class="list-group-item"><strong>Finished:</strong> <span>{{finishTime}}</span></li>
-                                    <li class="list-group-item"><strong>Total:</strong> <span>{{totalTime}}</span></li>
+                                    <li class="list-group-item"><strong>Started:</strong> <span>{{startTime | date:'HH:mm'}}</span> </li>
+                                    <li class="list-group-item"><strong>Finished:</strong> <span>{{finishTime | date:'HH:mm'}}</span></li>
+                                    <li class="list-group-item"><strong>Total:</strong> <span>{{totalTime.hours | number:'2.0-0'}}:{{totalTime.minutes | number:'2.0-0'}}</span></li>
                                 </ul>
         
                             </div>
@@ -58,9 +58,9 @@
                                 <tbody>
                                     <tr *ngFor="let entry of todayEntries">
                                         <!--IN ORDER TO COLLAPSE, use: class="collapse out/in"-->
-                                        <td>{{entry.startTime}}</td>
-                                        <td>{{entry.finishTime}}</td>
-                                        <td>{{entry.totalTime}}</td>
+                                        <td>{{entry.startTime | date:'HH:mm'}}</td>
+                                        <td>{{entry.finishTime | date:'HH:mm'}}</td>
+                                        <td>{{entry.totalTime.hours | number:'2.0-0'}}:{{entry.totalTime.minutes | number:'2.0-0'}}</td>
                                     </tr>
                                     <tr>
                                         <!--form class="form-group"-->
