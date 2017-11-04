@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { DatePipe } from '@angular/common'
-import { TimePeriod } from './time-period'
+import { TimePeriod } from './model/time-period'
 
 @Component({
   selector: 'app-root',
@@ -19,28 +19,16 @@ export class AppComponent {
   one_day: number = this.one_hour * 24;
   one_month: number = this.one_day * 30;
 
-  constructor(){
+  constructor() {
 
-    this.today = new Date();
-
+    
     setInterval(() => {   
-
+      
       this.today = new Date();
-
-      let now: number = new Date().getTime();
-
-      console.log("Ms: " + Math.abs (now - this.start.getTime()));
-
-      let sec: number = Math.round ((now - this.start.getTime()) / this.one_second);
-
-      console.log("Seconds: " + sec);
-      console.log("Minutes: " + Math.round ((now - this.start.getTime()) / this.one_minute));
-      console.log("Hours: " + Math.round ((now - this.start.getTime()) / this.one_hour));
-      console.log("Days: " + Math.round ((now - this.start.getTime()) / this.one_day));
-
 
     }, 1000);
   
   }
 
 }
+

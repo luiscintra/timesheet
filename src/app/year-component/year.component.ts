@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TimePeriod } from '../time-period'
+import { TimeRecord } from '../model/time-record'
 
 @Component({
  selector: 'year',
@@ -7,18 +7,18 @@ import { TimePeriod } from '../time-period'
 })
 export class YearComponent {
 
-    tm : TimePeriod = new TimePeriod('08:45', '11:45', '03:00', null);
+    tm : TimeRecord = new TimeRecord('08:45', '11:45', '03:00', null);
     
     startTime : string = this.tm.startTime;
     finishTime : string = this.tm.finishTime;
     totalTime : string = this.tm.totalTime;
   
-    todayEntries : TimePeriod[] = [
-      new TimePeriod('08:45', '11:45', '03:00', null),
-      new TimePeriod('12:00', '13:00', '01:00', null),
-      new TimePeriod('13:30', '14:30', '01:00', null),
-      new TimePeriod('15:00', '17:00', '02:00', null),
-      new TimePeriod('20:00', '23:45', '03:45', null)
+    todayEntries : TimeRecord[] = [
+      new TimeRecord('08:45', '11:45', '03:00', null),
+      new TimeRecord('12:00', '13:00', '01:00', null),
+      new TimeRecord('13:30', '14:30', '01:00', null),
+      new TimeRecord('15:00', '17:00', '02:00', null),
+      new TimeRecord('20:00', '23:45', '03:45', null)
     ];
  
 }

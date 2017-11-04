@@ -1,4 +1,4 @@
-export class TimePeriod {
+export class TimeRecord {
     constructor(
         public startTime : string,
         public finishTime : string,
