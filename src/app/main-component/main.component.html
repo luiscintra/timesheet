@@ -13,9 +13,9 @@
                             <div class="panel-body">
         
                                 <ul class="list-group">
-                                    <li class="list-group-item"><strong>Started:</strong> <span>{{startTime | date:'HH:mm'}}</span> </li>
-                                    <li class="list-group-item"><strong>Finished:</strong> <span>{{finishTime | date:'HH:mm'}}</span></li>
-                                    <li class="list-group-item"><strong>Total:</strong> <span *ngIf="totalTime">{{totalTime.hours | number:'2.0-0'}}:{{totalTime.minutes | number:'2.0-0'}}</span></li>
+                                    <li class="list-group-item"><strong>Worked Hours:</strong> <span>{{totalHours | number:'2.0-0'}}:{{totalMinutes | number:'2.0-0'}}</span></li>
+                                    <li class="list-group-item"><strong>Started at:</strong> <span>{{todayStart | date:'HH:mm'}}</span> </li>
+                                    <!--li class="list-group-item"><strong>Ends by:</strong> <span>{{finishTime | date:'HH:mm'}}</span></li-->
                                 </ul>
         
                             </div>
@@ -41,7 +41,7 @@
         
                         <div class="panel panel-default">
                             <div class="panel-heading ">
-                                <span class="panel-title">Today's Tracked Periods (component)</span>
+                                <span class="panel-title">Today's Tracked Periods</span>
                                 <span class="pull-right"> <button type="button" class="btn btn-xs btn-success"> ADD </button></span>
                             </div>
         
@@ -56,11 +56,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr *ngIf="timerOn" class="bg-success">
+                                        <td>{{currentPeriodStart | date:'HH:mm'}}</td>
+                                        <td>---</td>
+                                        <td>{{currentHours | number:'2.0-0'}}:{{currentMinutes | number:'2.0-0'}}</td>
+                                    </tr>
                                     <tr *ngFor="let entry of todayEntries">
-                                        <!--IN ORDER TO COLLAPSE, use: class="collapse out/in"-->
-                                        <td>{{entry.startTime | date:'HH:mm'}}</td>
-                                        <td>{{entry.finishTime | date:'HH:mm'}}</td>
-                                        <td>{{entry.totalTime.hours | number:'2.0-0'}}:{{entry.totalTime.minutes | number:'2.0-0'}}</td>
+                                            <!--IN ORDER TO COLLAPSE, use: class="collapse out/in"-->
+                                            <td>{{entry.startTime | date:'HH:mm'}}</td>
+                                            <td>{{entry.finishTime | date:'HH:mm'}}</td>
+                                            <td>{{entry.totalTime.hours | number:'2.0-0'}}:{{entry.totalTime.minutes | number:'2.0-0'}}</td>
                                     </tr>
                                     <tr>
                                         <!--form class="form-group"-->
@@ -73,13 +78,7 @@
                                         <td class="text-right " colspan="3">
                                             <button type="button" class="btn btn-xs btn-primary"> EDIT </button>
                                             <button type="button" class="btn btn-xs btn-danger"> DELETE </button>
-        
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>17:00</td>
-                                        <td>(still counting)</td>
-                                        <td>02:38</td>
                                     </tr>
                                 </tbody>
                             </table>
