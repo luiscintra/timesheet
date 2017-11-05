@@ -14,7 +14,7 @@ export class MainComponent {
 
   totalTime: TimePeriod;
 
-  openRecord: boolean = false;
+  timerOn: boolean = false;
 
   todayEntries: TimeRecord[] = [
     new TimeRecord(new Date(), new Date(), new TimePeriod(3 * 60 * 75000), null),
@@ -26,7 +26,7 @@ export class MainComponent {
 
   startFinish(): void {
 
-    if (this.openRecord) {
+    if (this.timerOn) {
       this.finishTime = new Date();
       this.finishTime.setMilliseconds(0);
 
@@ -47,7 +47,7 @@ export class MainComponent {
       this.totalTime = null;
     }
 
-    this.openRecord = !(this.openRecord);
+    this.timerOn = !(this.timerOn);
 
   }
 

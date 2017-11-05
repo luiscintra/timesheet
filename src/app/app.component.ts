@@ -14,9 +14,9 @@ export class AppComponent {
 
     this.today = new Date();
     
-    // setInterval(() => {   
-    //   this.today = new Date();
-    // }, 1000);
+    setInterval(() => {   
+      this.today = new Date();
+    }, 1000);
   
   }
 
