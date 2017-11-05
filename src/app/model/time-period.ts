@@ -1,24 +1,43 @@
 export class TimePeriod {
-    
-  hours : number = 0;
-  minutes : number = 0;
+  
+  private constructor(public hours: number, public minutes: number) {}
+  
+  private static ONE_SECOND: number = 1000;
+  private static ONE_MINUTE: number = TimePeriod.ONE_SECOND * 60;
+  private static ONE_HOUR: number = TimePeriod.ONE_MINUTE * 60;
 
-  constructor(public elapsedMillis:number) {
+  public static getByInterval(start: Date, finish: Date): TimePeriod {
 
-    const ONE_SECOND: number = 1000;
-    const ONE_MINUTE: number = ONE_SECOND * 60;
-    const ONE_HOUR: number = ONE_MINUTE * 60;
+    if (start.getMilliseconds() > finish.getMilliseconds())
+      throw new Error("Start date must be lower or equal than the finish date.");
 
-    this.hours = Math.floor(elapsedMillis / ONE_HOUR);
+    let millisDifference: number = finish.getTime() - start.getTime();
+    let minutesDifference: number = finish.getMinutes() - start.getMinutes();
 
-    let remainderMinutes = (elapsedMillis % ONE_HOUR);
+    let elapsedHours = Math.floor(millisDifference / TimePeriod.ONE_HOUR);
+    //millisDifference -= elapsedHours * TimePeriod.ONE_HOUR;
 
-    if (remainderMinutes > 0) {
-      this.minutes = Math.floor(remainderMinutes / ONE_MINUTE);
+    if (minutesDifference < 0) {
+      minutesDifference = 60 + minutesDifference;
     }
-    
+
+    return new TimePeriod(elapsedHours, minutesDifference);
+
   }
-      
+
+  public static getByHoursAndMinutes(hours:number, minutes:number) : TimePeriod {
+
+    let totalMinutes = minutes + hours * 60;
+
+    let resultHours = Math.floor(totalMinutes / 60);
+
+    let remainderMinutes = (totalMinutes % 60);
+
+    let resultMinutes = remainderMinutes > 0 ? remainderMinutes : totalMinutes;
+
+    return new TimePeriod(resultHours, resultMinutes);
+  }
+
 }
 
 
