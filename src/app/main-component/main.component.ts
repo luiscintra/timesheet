@@ -3,49 +3,52 @@ import { TimeRecord } from '../model/time-record'
 import { TimePeriod } from '../model/time-period'
 
 @Component({
- selector: 'main',
- templateUrl: './main.component.html'
+  selector: 'main',
+  templateUrl: './main.component.html'
 })
 export class MainComponent {
 
-    //currentRecord : TimeRecord = new TimeRecord(new Date(), new Date(), new TimePeriod(new Date(2017, 11, 5, 3, 4, 0).getTime(), new Date(2017, 11, 5, 5, 10, 0).getTime()), null);
-    
-    //startTime : Date = this.currentRecord.startTime;
-    startTime : Date;
+  startTime: Date;
 
-    //finishTime : Date = this.currentRecord.finishTime;
-    finishTime : Date;
+  finishTime: Date;
 
-    //totalTime : TimePeriod = this.currentRecord.totalTime;
-    totalTime : TimePeriod;
-  
-    todayEntries : TimeRecord[] = [
-      new TimeRecord(new Date(), new Date(), new TimePeriod(new Date(2017, 11, 5, 3, 4, 0).getTime(), new Date(2017, 11, 5, 5, 10, 0).getTime()), null),
-      new TimeRecord(new Date(), new Date(), new TimePeriod(new Date(2017, 11, 5, 3, 4, 0).getTime(), new Date(2017, 11, 5, 5, 10, 0).getTime()), null),
-      new TimeRecord(new Date(), new Date(), new TimePeriod(new Date(2017, 11, 5, 3, 4, 0).getTime(), new Date(2017, 11, 5, 5, 10, 0).getTime()), null),
-      new TimeRecord(new Date(), new Date(), new TimePeriod(new Date(2017, 11, 5, 3, 4, 0).getTime(), new Date(2017, 11, 5, 5, 10, 0).getTime()), null),
-      new TimeRecord(new Date(), new Date(), new TimePeriod(new Date(2017, 11, 5, 3, 4, 0).getTime(), new Date(2017, 11, 5, 5, 10, 0).getTime()), null)
-    ];
+  totalTime: TimePeriod;
 
-    startFinish() : void {
+  openRecord: boolean = false;
 
-      if (this.startTime && !this.finishTime) {
-        this.finishTime = new Date();
-        this.finishTime.setSeconds(0);
-        this.finishTime.setMilliseconds(0);
+  todayEntries: TimeRecord[] = [
+    new TimeRecord(new Date(), new Date(), new TimePeriod(3 * 60 * 75000), null),
+    new TimeRecord(new Date(), new Date(), new TimePeriod(3 * 60 * 75000), null),
+    new TimeRecord(new Date(), new Date(), new TimePeriod(3 * 60 * 75000), null),
+    new TimeRecord(new Date(), new Date(), new TimePeriod(3 * 60 * 75000), null),
+    new TimeRecord(new Date(), new Date(), new TimePeriod(3 * 60 * 75000), null)
+  ];
 
-        this.totalTime = new TimePeriod(this.startTime.getTime(), this.finishTime.getTime());
+  startFinish(): void {
 
-      }
+    if (this.openRecord) {
+      this.finishTime = new Date();
+      this.finishTime.setMilliseconds(0);
+
+      this.todayEntries.push(new TimeRecord(this.startTime, this.finishTime, new TimePeriod(this.finishTime.getTime() - this.startTime.getTime()), null));
+
+      let elapsedTotalMillis: number = 0;
+      this.todayEntries.forEach((r) => 
+        elapsedTotalMillis += r.totalTime.elapsedMillis
+      );
+
+      this.totalTime = new TimePeriod(elapsedTotalMillis);
+
+    } else {
+      this.startTime = new Date();
+      this.startTime.setMilliseconds(0);
       
-      if (!this.startTime)
-        this.startTime = new Date();
-        this.startTime.setSeconds(0);
-        this.startTime.setMilliseconds(0);
-
-
+      this.finishTime = null;
+      this.totalTime = null;
     }
 
+    this.openRecord = !(this.openRecord);
 
- 
+  }
+
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 import { DatePipe } from '@angular/common'
-import { TimePeriod } from './model/time-period'
 
 @Component({
   selector: 'app-root',
