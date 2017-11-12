@@ -1,0 +1,8 @@
+.time-unit {
+    display: inline;
+    width: 45px;
+}
+
+.time-separator {
+    margin-right: -4px;
+}

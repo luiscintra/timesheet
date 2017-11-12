@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule }   from '@angular/router';
 
@@ -7,6 +8,7 @@ import { MainComponent } from './main-component/main.component';
 import { WeekComponent } from './week-component/week.component';
 import { MonthComponent } from './month-component/month.component';
 import { YearComponent } from './year-component/year.component';
+import { EntryDetailComponent } from './entry-detail/entry-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import { YearComponent } from './year-component/year.component';
     MainComponent,
     WeekComponent,
     MonthComponent,
-    YearComponent
+    YearComponent,
+    EntryDetailComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
       {
         path: '',

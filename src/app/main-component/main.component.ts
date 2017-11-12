@@ -21,6 +21,11 @@ export class MainComponent {
 
   timer: any;
 
+  //clickRow: boolean;
+  //editRow: boolean;
+
+  selectedEntry: TimeRecord;
+
   todayEntries: TimeRecord[] = [
     // new TimeRecord(new Date("2017/11/05 02:31:00"), new Date("2017/11/05 02:35:00"), TimePeriod.getByInterval(new Date("2017/11/05 02:31:00"), new Date("2017/11/05 02:35:00")), null),
     // new TimeRecord(new Date("2017/11/05 02:30:55"), new Date("2017/11/05 02:31:05"), TimePeriod.getByInterval(new Date("2017/11/05 02:30:55"), new Date("2017/11/05 02:31:05")), null),
@@ -28,6 +33,10 @@ export class MainComponent {
     // new TimeRecord(new Date("2017/11/05 02:30:00"), new Date("2017/11/06 02:29:55"), TimePeriod.getByInterval(new Date("2017/11/05 02:30:00"), new Date("2017/11/06 02:29:55")), null),
     // new TimeRecord(new Date("2017/11/05 02:30:50"), new Date("2017/11/06 02:32:00"), TimePeriod.getByInterval(new Date("2017/11/05 02:30:50"), new Date("2017/11/06 02:32:00")), null)
   ];
+
+  onSelect(entry: TimeRecord) :void {
+    this.selectedEntry = entry;
+  }
 
   startFinish(): void {
 

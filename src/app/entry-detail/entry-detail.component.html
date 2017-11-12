@@ -1,0 +1,12 @@
+
+  <td *ngIf="entry"  class="tracked-periods-table-input-td">
+    <input [(ngModel)]="startHours" class="form-control time-unit" aria-label="Started Hours" type="text"/><span class="time-separator">:</span>
+    <input [(ngModel)]="startMinutes" class="form-control time-unit" aria-label="Started Minutes" type="text"/>
+  </td>
+
+  <td class="tracked-periods-table-input-td">
+    <input [(ngModel)]="finishHours" class="form-control time-unit" aria-label="Finished Hours" type="text"/><span class="time-separator">:</span>
+    <input [(ngModel)]="finishMinutes" class="form-control time-unit" aria-label="Finished Minutes" type="text"/>
+  </td>
+
+  <td class="tracked-periods-table-input-td text-right vertical-middle"><button type="button" class="btn btn-xs btn-success"> SAVE </button></td>
